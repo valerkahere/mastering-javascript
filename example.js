@@ -1,4 +1,3 @@
-
 // adds numbers 1 to 10
 let total = 0;
 // loop will use index as count, from 1 to 10
@@ -10,3 +9,4 @@ for (let count = 1; count < 11; count++) {
 }
 // when finished, print it out
 console.log(`The total is ${total}`);
+
