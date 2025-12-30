@@ -24,20 +24,20 @@ _#_#_#_#\n#_#_#_#_
 */
 
 let grid = '';
-let size = 8; 
+let size = 15; 
 for (let rowNumber = 1; rowNumber <= size; rowNumber++) {
     // if row is odd - start with space
     // if row is even - start with hash
     if (rowNumber % 2 !== 0) { // if it's odd
-        for (let colNumber = 1; colNumber <= size; colNumber++) {
+        for (let colNumber = 0; colNumber < size; colNumber++) {
             if (colNumber % 2 !== 0)  { // here will definitely give space first
                 grid += ' ';
             } else {
                 grid += '#';
             }
         }
-    } else if (rowNumber % 2 === 0) {
-        for (let colNumber = 1; colNumber <= size; colNumber++) {
+    } else { // vice-versa
+        for (let colNumber = 0; colNumber < size; colNumber++) {
             if (colNumber % 2 !== 0)  {
                 grid += '#';
             } else {
@@ -49,3 +49,20 @@ for (let rowNumber = 1; rowNumber <= size; rowNumber++) {
     grid += '\n';
 }
 console.log(grid);
+
+let board = "";
+
+// both (together) row and col - odd? Give space
+// both even? Give hash
+// Becose row decides - can simply merge them together
+for (let y = 0; y < size; y++) {
+  for (let x = 0; x < size; x++) {
+    if ((x + y) % 2 == 0) {
+      board += " ";
+    } else {
+      board += "#";
+    }
+  }
+  board += "\n";
+}
+console.log(board);
