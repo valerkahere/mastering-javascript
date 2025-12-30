@@ -13,40 +13,27 @@
     (This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. So if you solved it, your labor market value just went up.)
 */
 
-for (let number = 1; number < 101; number++) {
-    console.log(`Current number: ${number}`);
-    
-    // switch (number) {
-    //     case (number % 3 === 0):
-    //         console.log('Fizz');
-    //         break;
-    //     case (number % 5 === 0):
-    //         console.log('Buzz');
-    //         break;
-    //     // case (number % 3 === 0 && number % 5 === 0):
-    //     //     console.log('FizzBuzz');
-    //     //     break;
-    //     default:
-    //         console.log(number);
-    //         break;
-    // }
 
-    // let's try to use if else instead
+let testCases = [...Array(101).keys()];
+
+// Pure Function to determine logic
+// It is testable because it returns a value
+function FizzBuzz(number) {
     if (number % 3 === 0 && number % 5 === 0) {
-        console.log('FizzBuzz');
-        continue;
+        return 'FizzBuzz';
     }
     else if (number % 3 === 0) {
-        console.log('Fizz');
-        continue;
+        return 'Fizz';
+
     } else if (number % 5 === 0) {
-        console.log('Buzz');
-        continue;
+        return 'Buzz';
+
     } else {
-        console.log(number);
-        continue;
+        return Number(number);
     }
 }
 
-// first 10:
-// 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, Buzz
+for (let index = 1; index < testCases.length; index++) {
+    const testNumber = testCases[index];
+    console.log(FizzBuzz(testNumber));
+}
