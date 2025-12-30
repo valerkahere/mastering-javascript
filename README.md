@@ -9,3 +9,6 @@ This repository of mine is dedicated to practicing (and preaching) the exercises
 Simply put, Scrimba being the "workhorse" of my learning, at times I felt like I lack concrete maths-style theoretical definitions, **the source of truth**.
 
 While high-quality, techical and succinct [MDN docs](https://developer.mozilla.org/en-US/) do serve the purpose, I was looking for a more beginner-friendly reference, as well as more elaborate — and **I think I found it**.
+
+*Note:*
+I included .vs-code in here, so anyone can fork this repo and run it locally with F5 in VS Code **if Node.js is installed on the system**.
