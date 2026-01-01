@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/Leetcode/TwoSum.js",
+            "program": "${workspaceFolder}/Leetcode/2AddTwoNums.js",
             "console": "integratedTerminal"
 
         }
