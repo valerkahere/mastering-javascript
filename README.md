@@ -12,3 +12,4 @@ While high-quality, techical and succinct [MDN docs](https://developer.mozilla.o
 
 *Note:*
 I included .vs-code in here, so anyone can fork this repo and run it locally with F5 in VS Code **if Node.js is installed on the system**.
+- **Use F5 to run the program instead of node app.js (launch.json is configured this way for the chosen program)**

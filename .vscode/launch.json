@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/Leetcode/LinkedList.js",
+            "program": "${workspaceFolder}/interviewPrep/app.js",
             "console": "integratedTerminal"
 
         }
