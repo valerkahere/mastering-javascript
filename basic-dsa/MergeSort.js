@@ -71,42 +71,11 @@ export function mergeSort(unSortedArray) {
 
     const sortedLeft = mergeSort(left);
     const sortedRight = mergeSort(right);
-
-    let sortedArray = [];
-    let leftPointer = 0;
-    let rightPointer = 0;
-
-    // loop until END OF ONE OF ARRAY
-    // how do i know it's the end of array - check for undefined
-    while (
-      sortedLeft[leftPointer] !== undefined &&
-      sortedRight[rightPointer] !== undefined
-    ) {
-      if (sortedLeft[leftPointer] < sortedRight[rightPointer]) {
-        sortedArray.push(sortedLeft[leftPointer]);
-        leftPointer++;
-      } else {
-        sortedArray.push(sortedRight[rightPointer]);
-        rightPointer++;
-      }
-    }
-
-    // After the loop is over, add whatever is left in either halves to the result.
-    // left: 1 2
-    // right:  1, left loop end, add what's left
-    // left loop - how do i know i don't need it
-    // from where?
-    for (let i = leftPointer; i < sortedLeft.length; i++) {
-      sortedArray.push(sortedLeft[i]);
-    }
-
-    for (let i = rightPointer; i < sortedRight.length; i++) {
-      sortedArray.push(sortedRight[i]);
-    }
-
-    return sortedArray;
+    return MergeTwoSortedArrays(sortedLeft, sortedRight); // need explicit return value
   }
 }
+
+
 
 let array1 = [38, 27, 43, 3, 9, 82, 10];
 // length 7
@@ -148,3 +117,41 @@ Steps:
 11. After the loop is over, add whatever is left in either halves to the result.
 12. Return the result array.
 */
+
+function MergeTwoSortedArrays(firstArray, secondArray) {
+  let sortedArray = [];
+  let leftPointer = 0;
+  let rightPointer = 0;
+
+  // loop until END OF ONE OF ARRAY
+  // how do i know it's the end of array - check for undefined
+  while (
+    firstArray[leftPointer] !== undefined &&
+    secondArray[rightPointer] !== undefined
+  ) {
+    if (firstArray[leftPointer] < secondArray[rightPointer]) {
+      sortedArray.push(firstArray[leftPointer]);
+      leftPointer++;
+    } else {
+      sortedArray.push(secondArray[rightPointer]);
+      rightPointer++;
+    }
+  }
+
+  // After the loop is over, add whatever is left in either halves to the result.
+  // left: 1 2
+  // right:  1, left loop end, add what's left
+  // left loop - how do i know i don't need it
+  // from where?
+  for (let i = leftPointer; i < firstArray.length; i++) {
+    sortedArray.push(firstArray[i]);
+  }
+
+  for (let i = rightPointer; i < secondArray.length; i++) {
+    sortedArray.push(secondArray[i]);
+  }
+  return sortedArray;
+}
+
+// Time Complexity: O(n(log n))
+// Space: n
