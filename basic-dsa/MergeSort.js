@@ -75,8 +75,6 @@ export function mergeSort(unSortedArray) {
   }
 }
 
-
-
 let array1 = [38, 27, 43, 3, 9, 82, 10];
 // length 7
 // 7/2 = 3.5
@@ -126,8 +124,8 @@ function MergeTwoSortedArrays(firstArray, secondArray) {
   // loop until END OF ONE OF ARRAY
   // how do i know it's the end of array - check for undefined
   while (
-    firstArray[leftPointer] !== undefined &&
-    secondArray[rightPointer] !== undefined
+    leftPointer < firstArray.length && // same logic as for loop
+    rightPointer < secondArray.length
   ) {
     if (firstArray[leftPointer] < secondArray[rightPointer]) {
       sortedArray.push(firstArray[leftPointer]);
