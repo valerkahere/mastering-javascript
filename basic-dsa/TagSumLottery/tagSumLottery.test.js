@@ -1,7 +1,7 @@
-import { tagSumLottery } from './tagSumLottery';
+import { tagSumLotteryImproved } from './tagSumLottery';
 import { describe, test, expect } from 'vitest';
 
-describe('tagSumLottery', () => {
+describe('tagSumLotteryImproved', () => {
   test('array of length 6 gets 2 pairs of winners', () => {
     const communications = [
       { tag: 10, name: 'Tim the T-Rex' },
@@ -17,7 +17,7 @@ describe('tagSumLottery', () => {
       ['Karen the Cryol', 'Vince the Veloci'],
     ];
     expect(
-      tagSumLottery(communications, lotteryNumber)
+      tagSumLotteryImproved(communications, lotteryNumber)
     ).toStrictEqual(winners);
   });
 
@@ -31,7 +31,51 @@ describe('tagSumLottery', () => {
     const lotteryNumber = 100;
     const winners = 'No winners';
     expect(
-      tagSumLottery(communications, lotteryNumber)
+      tagSumLotteryImproved(communications, lotteryNumber)
+    ).toStrictEqual(winners);
+  });
+
+  test('dont return same person twice if the lottery number is exactly double their tag', () => {
+    const communications = [
+      { tag: 10, name: 'Tim the T-Rex' },
+      { tag: 26, name: 'Vince the Veloci' },
+      { tag: 40, name: 'Sue the Bellu' },
+      { tag: 47, name: 'Dean the Edmon' },
+    ];
+    const lotteryNumber = 20;
+    const winners = 'No winners';
+    expect(
+      tagSumLotteryImproved(communications, lotteryNumber)
+    ).toStrictEqual(winners);
+  });
+
+  test('dont return same person twice if theyre different entries', () => {
+    const communications = [
+      { tag: 10, name: 'Tim the T-Rex' },
+      { tag: 10, name: 'Tim the T-Rex' },
+      { tag: 26, name: 'Vince the Veloci' },
+      { tag: 40, name: 'Sue the Bellu' },
+      { tag: 47, name: 'Dean the Edmon' },
+    ];
+    const lotteryNumber = 20;
+    const winners = 'No winners';
+    expect(
+      tagSumLotteryImproved(communications, lotteryNumber)
+    ).toStrictEqual(winners);
+  });
+
+  test('dont return same name twice if theyre different tags', () => {
+    const communications = [
+      { tag: 9, name: 'Tim the T-Rex' },
+      { tag: 11, name: 'Tim the T-Rex' },
+      { tag: 26, name: 'Vince the Veloci' },
+      { tag: 40, name: 'Sue the Bellu' },
+      { tag: 47, name: 'Dean the Edmon' },
+    ];
+    const lotteryNumber = 20;
+    const winners = 'No winners';
+    expect(
+      tagSumLotteryImproved(communications, lotteryNumber)
     ).toStrictEqual(winners);
   });
 });
