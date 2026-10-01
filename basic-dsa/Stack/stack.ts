@@ -20,10 +20,7 @@ export class Stack {
       throw new Error('Stack is empty.');
     }
 
-    const topEl = this.stack[this.stack.length - 1];
-
-    this.stack.pop();
-    return topEl;
+    return this.stack.pop(); // can just return and it will return cause pop() returns
   }
 
   peek() {
@@ -41,11 +38,7 @@ export class Stack {
   }
 
   isEmpty() {
-    // Return whether the stack is empty or not.
-    if (this.stack.length === 0) {
-      return true;
-    }
-    return false;
+    return this.stack.length === 0;
   }
 }
 const stack = new Stack();
