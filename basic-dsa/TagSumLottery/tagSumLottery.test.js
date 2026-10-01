@@ -50,7 +50,7 @@ describe('tagSumLotteryImproved', () => {
   });
 
   test('dont return same person twice if theyre different entries', () => {
-    const communications = [
+  const communications = [
       { tag: 10, name: 'Tim the T-Rex' },
       { tag: 10, name: 'Tim the T-Rex' },
       { tag: 26, name: 'Vince the Veloci' },

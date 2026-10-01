@@ -127,38 +127,38 @@ You've made a great leap in efficiency by moving to an O(n) approach! However, y
 
 You've made a great start with the Map approach! However, your current implementation iterates over the map while modifying it, which can lead to unexpected behavior. Try building the map as you iterate through the communications array instead of pre-filling it—this will help you find pairs more reliably. You're doing a dino-mite job! 🦖
 
+currently: prefill, remove
+needed: empty, add when match
+need iterate over original array of communications
+
+    // NOTE: i was halfway through solution and realised i'm not using map at all!
+
+It looks like you're still using a nested search approach with `.find()` inside your loop, which keeps the complexity at O(n^2). Try using a Map to store the tags you've already seen so you can look up the 'target' value in constant time! 
+
+=> literally what i was doing but vice versa
+
+You've got the right idea with the Map, but your code has some syntax errors like nested function declarations and duplicate variable initializations that will prevent it from running. Try cleaning up the structure so the loop and logic are clearly defined outside of any extra wrappers!
+=> bad pate
 
 
 */
 
 export function tagSumLotteryImproved(communications, lotteryNumber) {
   const winners = [];
-
   const stored = new Map();
 
-  // has an array of object, so need to map them onto map key value pairs
-  communications.forEach((element) => {
-    stored.set(element.tag, element.name);
-  });
-
-  for (const [tag, name] of stored) {
-    // delete straight away so don't match itself if lottery
-    // is exactly double the tag
-
-    stored.delete(tag);
-    console.log('map after tag deleted:');
-    for (const [tag, name] of stored) {
-      console.log(tag, name);
-    }
-
+  // Store tags you've *already* seen. To look up target in constant time
+  for (const { tag, name } of communications) {
     const target = lotteryNumber - tag;
-    // how do if find tag of 40
-    // I DON'T NEED TO FIND IT
-    // just CHECK IF IT'S THERE
     const secondNameMatchesFifty = stored.get(target);
-    if (secondNameMatchesFifty !== undefined && name !== secondNameMatchesFifty) {
+    if (
+      secondNameMatchesFifty !== undefined &&
+      name !== secondNameMatchesFifty
+    ) {
       winners.push([name, secondNameMatchesFifty].toSorted());
     }
+    stored.set(tag, name);
+
   }
 
   if (winners.length > 0) {
@@ -166,3 +166,101 @@ export function tagSumLotteryImproved(communications, lotteryNumber) {
   }
   return 'No winners';
 }
+
+/* 
+old:
+  // compare to target number
+  // like lotteryNumber = 50
+  // for each tag:
+  // lotteryNumber - tag = target
+  // communications.has(target)
+  // yes: add both old tag and new tag names to winners
+  // no: ...
+
+  // if stored has something that adds up to 50?
+
+  1. Init winners array,
+  create stored map
+  Loop through each object in communications
+  if stored has that current tag: tag current + tag next === lotteryNumber
+  add both names to winners array
+  else
+  add to stored: tag, name - current
+  return winners array
+  return "No winners"
+ 
+  for each tag:
+  lotteryNumber - tag = target
+  communications.has(target)
+  yes: add both old tag and new tag names to winners
+  no: next iteration, skip
+
+
+  // const winners = [];
+
+  // const stored = new Map();
+
+  // // has an array of object, so need to map them onto map key value pairs
+  // communications.forEach((element) => {
+  //   stored.set(element.tag, element.name);
+  // });
+
+  // for (const [tag, name] of stored) {
+  //   const target = lotteryNumber - tag;
+  //   // how do if find tag of 40
+  //   // I DON'T NEED TO FIND IT
+  //   // just CHECK IF IT'S THERE
+  //   const secondNameMatchesFifty = stored.get(target)
+  //   if (secondNameMatchesFifty !== undefined) {
+  //     winners.push([name, secondNameMatchesFifty].toSorted())
+      
+  //   }
+  //     // in any case REMOVE both FROM MAP TO AVOID DUPLICATES - cause they're checked
+
+  //   stored.delete(tag);
+  //   stored.delete(target);
+  // }
+
+  // if (winners.length > 0) {
+  //   return winners;
+  // }
+  // return 'No winners';
+
+
+wrong array version 
+  const winners = [];
+
+  const stored = new Map();
+
+  // has an array of object, so need to map them onto map key value pairs
+  // communications.forEach((element) => {
+  //   stored.set(element.tag, element.name);
+  // });
+
+  for (const { tag, name } of communications) {
+    // delete straight away so don't match itself if lottery
+    // is exactly double the tag
+
+    communications.delete({tag, name});
+
+    // console.log('map after tag deleted:');
+    // for (const [tag, name] of stored) {
+    //   console.log(tag, name);
+    // }
+
+    const target = lotteryNumber - tag;
+    // how do if find tag of 40
+    // I DON'T NEED TO FIND IT
+    // just CHECK IF IT'S THERE
+    const secondNameMatchesFifty = communications.find(
+      (element) => element.tag === target
+    );
+    //const secondNameMatchesFifty = stored.get(target);
+    if (
+      secondNameMatchesFifty !== undefined &&
+      name !== secondNameMatchesFifty.name
+    ) {
+      winners.push([name, secondNameMatchesFifty.name].toSorted());
+    }
+  }
+*/
