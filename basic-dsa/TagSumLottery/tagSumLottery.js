@@ -117,8 +117,7 @@ Steps:
 
 */
 
-// Time Complexity: O(n) - for loop
-// Space Complexity: O(n) - because of stored Map
+
 
 /* Feedback:
 You've done a great job optimizing the algorithm to O(n) time complexity! Just a small heads-up: your current approach might miss some valid pairs because you are deleting both the current tag and the target tag from the map immediately, which can prevent subsequent iterations from finding their matches. Keep up the great work! 🦖
@@ -166,6 +165,9 @@ export function tagSumLotteryImproved(communications, lotteryNumber) {
   }
   return 'No winners';
 }
+
+// Time Complexity: O(n) - for loop
+// Space Complexity: O(n) - because of stored Map
 
 /* 
 old:
