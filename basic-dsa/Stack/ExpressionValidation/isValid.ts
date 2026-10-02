@@ -7,7 +7,20 @@ import { Stack } from './stack.js';
   Paradigm: Stack for remembering sequencing
 
 
-  Steps:
+  Proper steps:
+  split input string and filter from empty spaces
+  Init a stack
+  array for loop
+  if current element is equal to <
+    add it to stack
+  else if current element is equal to >
+    check if stack not empty and stack.pop return <
+      if not - return false
+    if yes, 
+  
+  return stack.isEmpty
+
+  old Steps:
   Init leftAngle and rightAngle counts to 0
   ~~First check if exp empty~~
   for split the exp, getting an array of char
@@ -54,6 +67,7 @@ import { Stack } from './stack.js';
 
   */
 
+// NOt working
 // export function isValid(exp) {
 //   let leftAngleCount = 0;
 //   let rightAngleCount = 0;
@@ -79,7 +93,8 @@ import { Stack } from './stack.js';
 //   return leftAngleCount === rightAngleCount;
 // }
 
-export function isValid(input) {
+// Previous solution #
+export function _isValid(input) {
     // reverse cause we're using a stack and pop which is LTR.
     // while my logic is RTL
     // reverse side effect: it changes ["<", ">"] to [">", "<"], breaking the logic still.
@@ -114,6 +129,25 @@ export function isValid(input) {
 
 // Time Complexity: O(n). loops
 // Space Complexity: as much as < and > is in input basically
+
+export function isValid(input) {
+    input = input.split('').filter((el) => el !== ' ');
+
+    const trackOfAngles = new Stack();
+    for (let i = 0; i < input.length; i++) {
+        if (input[i] === '<') {
+            trackOfAngles.push('<');
+        } else if (input[i] === '>') {
+            if (trackOfAngles.isEmpty() === true || trackOfAngles.pop() !== '<') {
+                return false;
+            }
+        }
+    }
+
+    return trackOfAngles.isEmpty();
+}
+// Time Complexity:
+// Space Complexity:
 
 console.log(`valid: `);
 console.log(isValid('<>'));
