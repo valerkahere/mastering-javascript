@@ -9,7 +9,7 @@
     "test": "vitest"
   },
   "keywords": [],
-  "author": "", 
+  "author": "",
   "license": "ISC",
   "devEngines": {
     "packageManager": {
@@ -22,5 +22,8 @@
   "type": "module",
   "devDependencies": {
     "vitest": "^5.0.2"
+  },
+  "dependencies": {
+    "prettier": "^3.9.9"
   }
 }
