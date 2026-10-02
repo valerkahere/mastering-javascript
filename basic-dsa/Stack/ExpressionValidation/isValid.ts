@@ -146,8 +146,9 @@ export function isValid(input) {
 
     return trackOfAngles.isEmpty();
 }
-// Time Complexity:
-// Space Complexity:
+// Time Complexity: O(n) for loop
+// Space Complexity: O(n) - сould contain entire expression
+// if it was all opening brackets
 
 console.log(`valid: `);
 console.log(isValid('<>'));
